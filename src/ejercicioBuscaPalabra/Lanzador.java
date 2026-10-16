@@ -30,13 +30,9 @@ public class Lanzador {
             System.out.println("\nBuscando: " + palabra);
 
             try {
-                ProcessBuilder pb = new ProcessBuilder(
-                        "java",
-                        "-cp",
-                        System.getProperty("java.class.path"),
-                        "C:\\Users\\ainho\\Desktop\\2ºDAM\\PSP\\PSP_Practicas\\src\\ejercicioBuscaPalabra\\BuscaPalabra.java",
-                        fichero,
-                        palabra
+                ProcessBuilder pb = new ProcessBuilder("java", "-cp", System.getProperty("java.class.path"),
+                        "src\\ejercicioBuscaPalabra\\BuscaPalabra.java",
+                        fichero, palabra
                 );
 
                 // El hijo muestra su salida directamente en la consola
@@ -47,15 +43,11 @@ public class Lanzador {
                 // Esperamos a que termine el proceso actual
                 int resultado = proceso.waitFor();
 
-                System.out.println(
-                        "El proceso ha terminado. Código devuelto: "
-                                + resultado
-                );
+                System.out.println("El proceso ha terminado. Código devuelto: " + resultado);
 
             } catch (IOException e) {
-                System.err.println(
-                        "No se pudo iniciar el proceso: " + e.getMessage()
-                );
+                System.err.println("No se pudo iniciar el proceso: " + e.getMessage());
+
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.err.println("Se interrumpió la espera del proceso.");
